@@ -1,0 +1,10 @@
+FROM node:lts
+WORKDIR /service
+COPY *.js package* README* ./
+COPY src src
+COPY util util
+RUN npm ci
+EXPOSE 5000
+ENV API_URL=http://localhost:8000
+ENTRYPOINT [ "npm", "start" ]
+
