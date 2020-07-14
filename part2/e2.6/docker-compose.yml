@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  backend:
+    image: backend:latest
+    environment:
+      - FRONT_URL=http://localhost:5000
+      - REDIS=redis
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=pass12345
+      - DB_NAME=postgres
+      - DB_HOST=postgres
+    ports:
+      - 8000:8000
+  redis:
+    image: redis:6
+  postgres:
+    image: postgres:11
+    environment:
+      - POSTGRES_PASSWORD=pass12345
+  frontend:
+    image: frontend:latest
+    environment:
+      - API_URL=http://localhost:8000
+    ports:
+      - 5000:5000
