@@ -4,7 +4,7 @@ services:
     image: builder:latest
     build: .
     environment:
-      - GIT_REPO=https://github.com/McFizh/rekrypeli_frontend
+      - GIT_REPO=https://github.com/McFizh/rekrypeli_front
       - CONTAINER_NAME=mcfizh/rekrypeli_frontend:latest
       - PUSH_TO_DOCKER=true
     volumes:
