@@ -1,0 +1,18 @@
+FROM node:lts-slim
+RUN apt-get update ; apt-get install -y python make g++
+USER node
+WORKDIR /service
+COPY *.js package* README* ./
+COPY src src
+COPY util util
+RUN npm ci ; npm cache clean --force
+
+# Note. This image doesn't have sudo.. So we must switch to root to remove packages
+USER root
+RUN apt-get purge -y --auto-remove python make g++ ; apt-get clean
+
+# And then switch back to node user once again
+USER node
+EXPOSE 5000
+ENTRYPOINT [ "npm", "start" ]
+

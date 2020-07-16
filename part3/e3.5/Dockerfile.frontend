@@ -1,0 +1,14 @@
+FROM node:lts-alpine
+RUN apk add --update g++ make python
+USER node
+WORKDIR /service
+COPY *.js package* README* ./
+COPY src src
+COPY util util
+RUN npm ci ; npm cache clean --force
+USER root
+RUN apk del g++ make python
+USER node
+EXPOSE 5000
+ENTRYPOINT [ "npm", "start" ]
+
