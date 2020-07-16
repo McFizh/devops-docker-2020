@@ -1,0 +1,11 @@
+version: "3"
+services:
+  builder:
+    image: builder:latest
+    build: .
+    environment:
+      - GIT_REPO=https://github.com/McFizh/rekrypeli_frontend
+      - CONTAINER_NAME=mcfizh/rekrypeli_frontend:latest
+      - PUSH_TO_DOCKER=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
