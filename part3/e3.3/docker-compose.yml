@@ -4,6 +4,8 @@ services:
     image: builder:latest
     build: .
     environment:
+      - DOCKER_USERNAME=username
+      - DOCKER_PASSWORD=password
       - GIT_REPO=https://github.com/McFizh/rekrypeli_front
       - CONTAINER_NAME=mcfizh/rekrypeli_frontend:latest
       - PUSH_TO_DOCKER=true

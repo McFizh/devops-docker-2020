@@ -2,6 +2,10 @@
 
 set following variables in docker-compose
 
+DOCKER_USERNAME & DOCKER_PASSWORD
+
+Credentials for docker hub
+
 GIT_REPO=https://github.com/abc/def
 
 Repo, which you want to build the project from

@@ -20,5 +20,6 @@ fi
 docker build -t $CONTAINER_NAME .
 
 if [ "$PUSH_TO_DOCKER" = true ]; then
+  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   docker push $CONTAINER_NAME
 fi
